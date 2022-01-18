@@ -13,6 +13,13 @@
 		FC853E8B27962F64007680A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC853E8A27962F64007680A9 /* Assets.xcassets */; };
 		FC853E8E27962F64007680A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC853E8C27962F64007680A9 /* LaunchScreen.storyboard */; };
 		FC853E96279630A1007680A9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC853E95279630A1007680A9 /* MainViewController.swift */; };
+		FC853E982796632D007680A9 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC853E972796632D007680A9 /* Networking.swift */; };
+		FC853E9B27966375007680A9 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = FC853E9A27966375007680A9 /* SwiftSoup */; };
+		FC853E9D2796646C007680A9 /* ClassDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC853E9C2796646C007680A9 /* ClassDate.swift */; };
+		FC853E9F2796648A007680A9 /* MbaClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC853E9E2796648A007680A9 /* MbaClass.swift */; };
+		FC853EA1279664B3007680A9 /* ClassType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC853EA0279664B3007680A9 /* ClassType.swift */; };
+		FC853EA3279664D9007680A9 /* DateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC853EA2279664D9007680A9 /* DateHandler.swift */; };
+		FC853EA5279664EE007680A9 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC853EA4279664EE007680A9 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +31,12 @@
 		FC853E8D27962F64007680A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC853E8F27962F64007680A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC853E95279630A1007680A9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		FC853E972796632D007680A9 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		FC853E9C2796646C007680A9 /* ClassDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassDate.swift; sourceTree = "<group>"; };
+		FC853E9E2796648A007680A9 /* MbaClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MbaClass.swift; sourceTree = "<group>"; };
+		FC853EA0279664B3007680A9 /* ClassType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassType.swift; sourceTree = "<group>"; };
+		FC853EA2279664D9007680A9 /* DateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHandler.swift; sourceTree = "<group>"; };
+		FC853EA4279664EE007680A9 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC853E9B27966375007680A9 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +54,10 @@
 		FC853E7527962F60007680A9 = {
 			isa = PBXGroup;
 			children = (
+				FC853EA2279664D9007680A9 /* DateHandler.swift */,
+				FC853EA4279664EE007680A9 /* Utilities.swift */,
+				FC853EA0279664B3007680A9 /* ClassType.swift */,
+				FC853E9E2796648A007680A9 /* MbaClass.swift */,
 				FC853E8027962F60007680A9 /* BGNetworkingTestApp */,
 				FC853E7F27962F60007680A9 /* Products */,
 			);
@@ -58,6 +76,8 @@
 			children = (
 				FC853E8127962F60007680A9 /* AppDelegate.swift */,
 				FC853E95279630A1007680A9 /* MainViewController.swift */,
+				FC853E972796632D007680A9 /* Networking.swift */,
+				FC853E9C2796646C007680A9 /* ClassDate.swift */,
 				FC853E8327962F60007680A9 /* SceneDelegate.swift */,
 				FC853E8527962F60007680A9 /* ViewController.swift */,
 				FC853E8A27962F64007680A9 /* Assets.xcassets */,
@@ -83,6 +103,9 @@
 			dependencies = (
 			);
 			name = BGNetworkingTestApp;
+			packageProductDependencies = (
+				FC853E9A27966375007680A9 /* SwiftSoup */,
+			);
 			productName = BGNetworkingTestApp;
 			productReference = FC853E7E27962F60007680A9 /* BGNetworkingTestApp.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +134,9 @@
 				Base,
 			);
 			mainGroup = FC853E7527962F60007680A9;
+			packageReferences = (
+				FC853E9927966375007680A9 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+			);
 			productRefGroup = FC853E7F27962F60007680A9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,9 +164,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC853E8627962F60007680A9 /* ViewController.swift in Sources */,
+				FC853E982796632D007680A9 /* Networking.swift in Sources */,
+				FC853EA3279664D9007680A9 /* DateHandler.swift in Sources */,
+				FC853EA1279664B3007680A9 /* ClassType.swift in Sources */,
+				FC853E9D2796646C007680A9 /* ClassDate.swift in Sources */,
 				FC853E8227962F60007680A9 /* AppDelegate.swift in Sources */,
 				FC853E8427962F60007680A9 /* SceneDelegate.swift in Sources */,
 				FC853E96279630A1007680A9 /* MainViewController.swift in Sources */,
+				FC853EA5279664EE007680A9 /* Utilities.swift in Sources */,
+				FC853E9F2796648A007680A9 /* MbaClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +382,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FC853E9927966375007680A9 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FC853E9A27966375007680A9 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FC853E9927966375007680A9 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FC853E7627962F60007680A9 /* Project object */;
 }
