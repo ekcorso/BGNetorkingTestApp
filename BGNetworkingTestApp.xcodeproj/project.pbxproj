@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		FC853E8227962F60007680A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC853E8127962F60007680A9 /* AppDelegate.swift */; };
 		FC853E8427962F60007680A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC853E8327962F60007680A9 /* SceneDelegate.swift */; };
-		FC853E8627962F60007680A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC853E8527962F60007680A9 /* ViewController.swift */; };
 		FC853E8B27962F64007680A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC853E8A27962F64007680A9 /* Assets.xcassets */; };
 		FC853E8E27962F64007680A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC853E8C27962F64007680A9 /* LaunchScreen.storyboard */; };
 		FC853E96279630A1007680A9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC853E95279630A1007680A9 /* MainViewController.swift */; };
@@ -26,7 +25,6 @@
 		FC853E7E27962F60007680A9 /* BGNetworkingTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BGNetworkingTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC853E8127962F60007680A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC853E8327962F60007680A9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FC853E8527962F60007680A9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FC853E8A27962F64007680A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC853E8D27962F64007680A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC853E8F27962F64007680A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,10 +52,6 @@
 		FC853E7527962F60007680A9 = {
 			isa = PBXGroup;
 			children = (
-				FC853EA2279664D9007680A9 /* DateHandler.swift */,
-				FC853EA4279664EE007680A9 /* Utilities.swift */,
-				FC853EA0279664B3007680A9 /* ClassType.swift */,
-				FC853E9E2796648A007680A9 /* MbaClass.swift */,
 				FC853E8027962F60007680A9 /* BGNetworkingTestApp */,
 				FC853E7F27962F60007680A9 /* Products */,
 			);
@@ -74,17 +68,36 @@
 		FC853E8027962F60007680A9 /* BGNetworkingTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				FC853EA627966907007680A9 /* Utilities */,
+				FC853EA727966918007680A9 /* Data Model */,
 				FC853E8127962F60007680A9 /* AppDelegate.swift */,
 				FC853E95279630A1007680A9 /* MainViewController.swift */,
 				FC853E972796632D007680A9 /* Networking.swift */,
-				FC853E9C2796646C007680A9 /* ClassDate.swift */,
 				FC853E8327962F60007680A9 /* SceneDelegate.swift */,
-				FC853E8527962F60007680A9 /* ViewController.swift */,
 				FC853E8A27962F64007680A9 /* Assets.xcassets */,
 				FC853E8C27962F64007680A9 /* LaunchScreen.storyboard */,
 				FC853E8F27962F64007680A9 /* Info.plist */,
 			);
 			path = BGNetworkingTestApp;
+			sourceTree = "<group>";
+		};
+		FC853EA627966907007680A9 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				FC853EA2279664D9007680A9 /* DateHandler.swift */,
+				FC853EA4279664EE007680A9 /* Utilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		FC853EA727966918007680A9 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				FC853EA0279664B3007680A9 /* ClassType.swift */,
+				FC853E9E2796648A007680A9 /* MbaClass.swift */,
+				FC853E9C2796646C007680A9 /* ClassDate.swift */,
+			);
+			path = "Data Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,7 +176,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC853E8627962F60007680A9 /* ViewController.swift in Sources */,
 				FC853E982796632D007680A9 /* Networking.swift in Sources */,
 				FC853EA3279664D9007680A9 /* DateHandler.swift in Sources */,
 				FC853EA1279664B3007680A9 /* ClassType.swift in Sources */,
