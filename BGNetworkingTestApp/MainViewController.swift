@@ -47,9 +47,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         fetcher.fetchScheduleData() { [self] dates in
             // Check that dateList doesn't already contain these dates. If it doesn't, add them.
             self.dateList += dates.filter() { !self.dateList.contains($0) }
-            for date in dateList {
-                print(date.classes.map() { $0.name })
-            }
+            
             DispatchQueue.main.async {
                 customTableView.reloadData()
             }
@@ -72,8 +70,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let word = words[indexPath.row]
-        cell.textLabel?.text = word
+        
+        let mbaClass = dateList[indexPath.section].classes[indexPath.row]
+        var content = cell.defaultContentConfiguration()
+        content.text = mbaClass.name
+        cell.contentConfiguration = content
+        
         return cell
     }
 
