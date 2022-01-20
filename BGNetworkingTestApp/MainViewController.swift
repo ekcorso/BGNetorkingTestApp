@@ -15,11 +15,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return customTableView
     }()
     
-    let words = ["Yum", "Wow", "Yikes", "Yippe", "Whoa"]
+    var dateList = [ClassDate]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        
+        populateDateList()
+        
+        // populate dateList
     }
     
     func setupTableView() {
@@ -38,10 +42,32 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         ])
     }
     
+    func populateDateList() {
+        let fetcher = Networking()
+        fetcher.fetchScheduleData() { [self] dates in
+            // Check that dateList doesn't already contain these dates. If it doesn't, add them.
+            self.dateList += dates.filter() { !self.dateList.contains($0) }
+            for date in dateList {
+                print(date.classes.map() { $0.name })
+            }
+            DispatchQueue.main.async {
+                customTableView.reloadData()
+            }
+        }
+    }
+    
     // MARK: - Table View Data Source
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return dateList.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return dateList[section].exactDate!
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return words.count
+        return dateList[section].classes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
