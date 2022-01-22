@@ -15,15 +15,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return customTableView
     }()
     
-    var dateList = [ClassDate]()
+    var dateList = [ClassDate]() {
+        didSet {
+            dateList = dateList.sorted()
+            // The following line inserts a random element for testing whether the network fetch has occured
+//            dateList.insert(dateList.randomElement()!, at: 0)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         
         populateDateList()
-        
-        // populate dateList
+        registerForNotifications()
     }
     
     func setupTableView() {
@@ -43,14 +48,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func populateDateList() {
-        let fetcher = Networking()
-        fetcher.fetchScheduleData() { [self] dates in
+        Networking.fetchScheduleData() { [self] dates in
             // Check that dateList doesn't already contain these dates. If it doesn't, add them.
             self.dateList += dates.filter() { !self.dateList.contains($0) }
             
             DispatchQueue.main.async {
                 customTableView.reloadData()
             }
+        }
+    }
+    
+    func populateDateListFromNotification(_ dateList: [ClassDate]) {
+        self.dateList += dateList.filter() { !self.dateList.contains($0) }
+        DispatchQueue.main.async {
+            self.customTableView.reloadData()
         }
     }
     
@@ -79,5 +90,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
 
+    func registerForNotifications() {
+        print("registering for notification")
+        NotificationCenter.default.addObserver(forName: .newScheduleData, object: nil, queue: nil) { (notification) in
+            if let userInfo = notification.userInfo, let schedule = userInfo["schedule"] as? [ClassDate] {
+                print("Updating data from notification")
+                self.populateDateListFromNotification(schedule)
+            }
+        }
+    }
 
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
     //This func returns a string with unnecessary date info stripped out
@@ -55,4 +56,8 @@ extension FileManager {
         // send back the first path, which should be the only one
         return paths[0]
     }
+}
+
+extension Notification.Name {
+    static let newScheduleData = Notification.Name("com.emilykcorso.fetchScheduleData")
 }
