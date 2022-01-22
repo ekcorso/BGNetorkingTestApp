@@ -10,6 +10,7 @@ import SwiftSoup
 import Combine
 
 class Networking {
+    static let urlSession = URLSession(configuration: .default)
     var dateList: [ClassDate]? {
         didSet {
             if dateList != nil {
@@ -18,7 +19,7 @@ class Networking {
         }
     }
     
-    func fetchScheduleData(completion: @escaping ([ClassDate]) -> Void) {
+    static func fetchScheduleData(completion: @escaping ([ClassDate]) -> Void) {
         guard let url = URL(string: "https://app.squarespacescheduling.com/schedule.php?action=showCalendar&fulldate=1&owner=19967298&template=class"), let payloadPage1 = "type=&calendar=&skip=true&options%5Boffset%5D=0&options%5BnumDays%5D=5&ignoreAppointment=&appointmentType=&calendarID=".data(using: .utf8), let payloadPage2 = "type=&calendar=&skip=true&options%5Boffset%5D=15&options%5BnumDays%5D=5&ignoreAppointment=&appointmentType=&calendarID=".data(using: .utf8), let payloadPage3 = "type=&calendar=&skip=true&options%5Boffset%5D=30&options%5BnumDays%5D=5&ignoreAppointment=&appointmentType=&calendarID=".data(using: .utf8), let payloadPage4 = "type=&calendar=&skip=true&options%5Boffset%5D=45&options%5BnumDays%5D=5&ignoreAppointment=&appointmentType=&calendarID=".data(using: .utf8) else {
             print("One of the urls is incorrect")
             return
@@ -32,7 +33,7 @@ class Networking {
         for payload in payloadArray {
             request.httpBody = payload
             
-            let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            let dataTask = Networking.urlSession.dataTask(with: request) { (data, response, error) in
                 guard error == nil else {
                     print(error!.localizedDescription)
                     return
@@ -53,7 +54,7 @@ class Networking {
         }
     }
 
-    private func parseHtmlDoc(fromString: String) -> Document? {
+    private static func parseHtmlDoc(fromString: String) -> Document? {
         do {
             let html: String = fromString
             let doc: Document = try SwiftSoup.parse(html)
@@ -67,7 +68,7 @@ class Networking {
         }
     }
 
-    private func buildDateList(from doc: Document) -> [ClassDate] {
+    private static func buildDateList(from doc: Document) -> [ClassDate] {
         var dateArray = [ClassDate]()
         guard let elements = try? doc.select("tr") else {
             print("select for tr failed")
